@@ -83,6 +83,11 @@ p {
 
 .tm-content {  
   padding: 55px;
+  width: 100%;
+  height: auto;
+  word-wrap:break-word;
+  word-break:break-all;
+  overflow: hidden;
 }
 
 .tm-header {
