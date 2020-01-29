@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="css/zhihu-f.css" />
   <link rel="stylesheet" href="css/zhihu-s.css" />
 
+  <link rel="stylesheet" href="dist/zoomify.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
   <link rel="stylesheet" href="css/cyrillic.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/templatemo-style.css" />
@@ -20,7 +23,7 @@
 </head>
 
 
-
+<body>
   <div class="tm-page-container mx-auto">
     <header class="tm-header text-center">
       <h1 class="tm-title text-uppercase">故事不长，也不难讲；</h1>
@@ -61,6 +64,12 @@
           <p class="mb-4">2020-1-29</p>
           <p>
             今天发现了VSCode的live sever preview插件 好用到爆啊！
+          </p>
+          <div class="example col-xs-3 col-md-3">
+            <p><img src="img/s_preview.jpg" class="img-rounded" alt=""></p>
+          </div>
+          <p>
+            今天还抄了图片放大的功能 加油喽
           </p>
           <p class="mb-4">2020-1-28</p>
           <p>
@@ -234,6 +243,7 @@
             从考上大学到大一结束这段时间，我学到了很多自己喜欢的东西，我会一直坚持，我不知道它是否能带给我什么，我也不奢求，我喜欢，就够了。
           </p>
         </div>
+
       </div>
     </section>
 
@@ -245,5 +255,10 @@
     </footer>
   </div>
 </body>
+<script src="js/jquery.min.js"></script>
+<script src="js/zoomify.min.js"></script>
+<script type="text/javascript">
+	$('.example img').zoomify();
+</script>
 
 </html>
