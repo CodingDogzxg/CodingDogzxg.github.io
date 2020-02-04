@@ -14,9 +14,9 @@
 		var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
 	 
 
-		if (!(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
+		if ((bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
   
-			var alertmessage="温馨提示：您可以在右下角的菜单中下载最新版本的手机版APP哦！\n \n本提示只出现一次!"
+			var alertmessage="手机看要注意流量消耗哦~"
 			var once_per_session=1
 			function get_cookie(Name) {
 			  var search = Name + "="
