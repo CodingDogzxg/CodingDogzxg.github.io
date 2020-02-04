@@ -13,19 +13,43 @@
 		var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
 		var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
 	 
-		window.alert = function(name){
-			var iframe = document.createElement("IFRAME");
-			iframe.style.display="none";
-			iframe.setAttribute("src", 'data:text/plain,');
-			document.documentElement.appendChild(iframe);
-			window.frames[0].window.alert(name);
-			iframe.parentNode.removeChild(iframe);
-		};
-		
-		if ((bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
-			window.alert('手机浏览注意流量消耗哦~');
-		}
-	}
+
+		if (!(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
+  
+			var alertmessage="温馨提示：您可以在右下角的菜单中下载最新版本的手机版APP哦！\n \n本提示只出现一次!"
+			var once_per_session=1
+			function get_cookie(Name) {
+			  var search = Name + "="
+			  var returnvalue = "";
+			  if (document.cookie.length > 0) {
+				offset = document.cookie.indexOf(search)
+				if (offset != -1) {
+				  offset += search.length
+				  end = document.cookie.indexOf(";", offset);
+				  if (end == -1)
+					 end = document.cookie.length;
+				  returnvalue=unescape(document.cookie.substring(offset, end))
+				  }
+			   }
+			  return returnvalue;
+			}
+			function alertornot(){
+			if (get_cookie('alerted')==''){
+			loadalert()
+			document.cookie="alerted=yes"
+			}
+			}
+			function loadalert(){
+			alert(alertmessage)
+			}
+			if (once_per_session==0)
+			loadalert()
+			else
+			alertornot()
+				}
+
+			}
+			
 	</script>
 	
 	<p>hello</p>
