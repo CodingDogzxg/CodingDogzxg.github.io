@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>I LOVE Mby</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+	body{
+		background-color: black;
+	}
+
+	#code{
+		color:white;
+		font-size:80px;
+		text-align:left;
+		position: absolute;
+		top: 150px;
+	}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>>
+    <script type="text/javascript">
+	var $window=$(window);
+	var clientWidth=$(window).width();
+	var clientHeight=$(window).height();
+
+	(function(a){
+		a.fn.typewriter=function(){
+			this.each(function(){
+				var d=a(this),c=d.html(),b=0;
+				d.html("");
+				var e=setInterval(function(){
+					var f=c.substr(b,1);
+					if(f=="<"){
+						b=c.indexOf(">",b)+1
+					}
+					else{b++}
+					d.html(c.substring(0,b)+(b&1?"_":""));
+					if(b>=c.length){
+						clearInterval(e)
+					}
+				},75)
+			});
+			return this
+		}
+	})(jQuery);
+
+	function timeElapse(c){
+		$("#elapseClock").html(a)
+	}
+	function adjustCodePosition(){
+		$("#code").css("margin-top",100)
+	}
+	</script>
+</head>
+
+<body>
+	<div id="code">
+		<span class="comments">(\_/)</span><br />
+		<span class="comments">(•ᴗ•)</span><br />
+		<span class="comments">/＞i love you❤</span><br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<span class="comments">To my beloved Mby</span><br />
+		<span class="comments">Zxg</span><br />
+	</div>
+
+	<script type="text/javascript">
+		if (!document.createElement('canvas').getContext) {
+		    document.execCommand("stop");
+		} else {
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+</body>
+</html>
