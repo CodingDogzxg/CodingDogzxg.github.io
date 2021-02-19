@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>敲几？</title>
+    <style type="text/css">
+      body {
+        background-color: black;
+        align-items: center;
+      }
+      .fontstyle {
+        font-family: "Microsoft Yahei", STHeiti;
+        font-size: 200px;
+        color:rgba(0, 255, 255, 0.507);
+        margin-top: 500px;
+        text-align: center;
+      }
+      .buttonstyle{
+        width: 250px;
+        height: 100px;
+        position: absolute;
+        bottom: 50px;
+        transform: translateX(-50%);
+        background-color: rgba(0, 255, 255, 0.507);
+        font-size: 40px;
+      }
+      .buttonstyle1{
+        width: 250px;
+        height: 100px;
+        position: absolute;
+        bottom: 160px;
+        transform: translateX(-50%);
+        background-color: rgba(0, 255, 255, 0.507);
+        font-size: 40px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <p class="fontstyle" id="font">
+      数字
+    </p>
+    <div align="center" id="div">
+        <button id="bt" class="buttonstyle" onclick="getNumberList()">
+          选数字
+        </button>
+    </div>
+  </body>
+  <script>
+    var NumberList = [];
+    var index = -1;
+    var font = document.getElementById("font");
+    function getNumberList(){
+      var number = Number(prompt("请输入一个数字"));
+      if(number && number < 10 && number > 1){
+        for(var i=1; i<10000; i++){
+          if(i.toString().indexOf(number) == -1 && i%number != 0){
+            NumberList.push(i);
+          }
+          else{
+            NumberList.push(i.toString() + "敲");
+          }
+        }
+        var bt = document.getElementById("bt");
+        bt.innerHTML = "下一个";
+        bt.onclick = showNumberNext;
+        showExtraButton();
+        showNumberNext();
+      }
+      else{
+        alert("输入的不是一个有效数字");
+      }
+    }
+    function showExtraButton (){
+      var btEx = document.createElement("button");
+      var fatherElement = document.getElementById("div");
+      fatherElement.appendChild(btEx);
+      btEx.setAttribute("class", "buttonstyle1");
+      btEx.setAttribute("onclick", "showNumberPrev()");
+      btEx.innerHTML = "上一个";
+    }
+    function showNumberPrev(){
+      if(index > 0){
+        index -= 1;
+        font.innerHTML = NumberList[index].toString();
+      }
+      else{
+        index = index <= -1 ? -1 : index -1;
+        console.log(index);
+        font.innerHTML = "没啦";
+      }
+    }
+    function showNumberNext(){
+      index += 1;
+      font.innerHTML = NumberList[index].toString();
+    }
+  </script>
+
+</html>
