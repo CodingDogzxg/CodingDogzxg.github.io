@@ -1,0 +1,110 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <script src="./resource/js/vue3.1.1.js"></script>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus@1.0.2-beta.48/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="corrector.css">
+    <!-- import JavaScript -->
+    <script src="./resource/js/elemp102b48.js"></script>
+    <link rel="shortcut icon" href="./resource/pics/shortcut.ico" />
+    
+    <link rel="bookmark" href="./resource/pics/cursor.ico" />
+    <link rel="stylesheet" href="./resource/css/cursor.css" />
+    <title>句读</title>
+</head>
+
+<body>
+   <div id="app">
+        <div class="common-layout">
+            <el-container style="text-align: center;">
+                <el-header>
+                    <el-avatar shape="square" :size="45" fit="contain" src="./resource/pics/avatar.png"></el-avatar>
+                </el-header>
+                <el-container>
+                    <el-aside style="text-align: left; width: 100%; padding-left: 22.5%;">
+                        <el-select v-model="value">
+                            <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-aside>
+                </el-container>
+                <el-container>
+                    <el-aisde style="width:100%">
+                        <el-input placeholder="请输入Title" v-model="input1" style="width: 55%;">
+                            <template #prepend>Title</template>
+                        </el-input>
+                    </el-aisde>
+                </el-container>
+                <el-container>
+                    <el-aisde style="width:100%; padding-top: 5px;">
+                        <el-input style="width:55%"
+                        type="textarea"
+                        :rows="10"
+                        placeholder="请输入正文"
+                        v-model="textarea">
+                        </el-input>
+                    </el-aisde>
+                </el-container>
+                <el-container>
+                    <el-aside style="width: 100%; padding-top: 5px;">
+                        <el-button @click="open1" type="primary">句读一下 <i class="el-icon-s-promotion cl-icon--right"></i></el-button>
+                        <el-dialog
+                            title="提示"
+                            v-model="dialogVisible"
+                            width="50%">
+                            <el-button type="primary" @click="dialogVisible=false">确 定</el-button>
+                        </el-dialog>
+                    </el-aside>
+                </el-container>
+                <el-container>
+                    <el-aside style="width: 100%; padding-top: 5px;">
+                        <span>
+                            Result:
+                        </span>
+                    </el-aside>
+                </el-container>
+            </el-container>
+        </div>
+   </div>
+   <script>
+       const { defineComponent, ref, h } = Vue
+
+        var Main = defineComponent({
+            methods: {
+                open1() {
+                    this.$notify({
+                    title: '提示',
+                    message: h('i', { style: 'color: #409EFF'}, '功能正在制作，客官敬请期待！')
+                    });
+                },
+            },
+            setup() {
+                return {
+                    dialogVisible: ref(false),
+                    input: ref(''),
+                    input1: ref(''),
+                    textarea: ref('')
+                }
+            },
+            data() {
+                return {
+                    options: [{
+                    value: '选项1',
+                    label: 'English'
+                    }],
+                    value: 'English'
+                }
+            }
+        });
+        const app = Vue.createApp(Main);
+        app.use(ElementPlus);
+        app.mount("#app")
+    </script>
+</body>
+</html>

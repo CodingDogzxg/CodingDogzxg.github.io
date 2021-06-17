@@ -1,0 +1,63 @@
+.el-header, .el-footer {
+    background-color: #409EFF;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+    height: 45px !important;
+  }
+
+  .el-aside {
+    color: #333;
+    height: 50px;
+  }
+
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+  }
+
+  body > .el-container {
+    margin-bottom: 40px;
+  }
+
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+  }
+
+  .el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+  }
+
+  .el-select {
+      padding-top: 5px;
+      width: 125px;
+  }
+
+  .el-input__inner {
+      color: white;
+      background: #409EFF ;
+  }
+
+  .el-input-group__prepend {
+      color:white;
+      background: #409EFF ;
+  }
+
+  .el-input__inner::placeholder {
+    color: white;
+  }
+
+  .el-button--primary:focus, .el-button--primary:hover 
+  {
+      background-color: #409EFF;
+  }
+
+  .el-button--primary.is-active, .el-button--primary:active {
+      background: #a4cffa;
+  }
+
+  .el-dialog {
+      height:250px;
+  }

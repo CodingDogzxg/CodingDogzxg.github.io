@@ -1,0 +1,12 @@
+*{
+    cursor:url(../pics/cursor.ico)0 0,auto;
+}
+textarea.el-textarea__inner, .el-input__inner{
+    cursor: text;
+}
+.el-icon-s-promotion:before{
+    cursor:pointer;
+}
+span {
+    cursor:pointer !important;
+}
