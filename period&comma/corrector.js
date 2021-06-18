@@ -36,8 +36,23 @@ var Main = defineComponent({
             console.log(value);
         },
         funcReEnglish(text) {
-            reg = /[,.:;!?]/g.exec(text);
-            console.log(reg);
+            let reg = /[,.:;!?](?! ])/g;
+            let text_temp = text;
+            while(res = reg.exec(text_temp)) {
+                let punc = res[0];
+                let str = '[p](?! )';
+                let reg_new = str.replace('p', punc);
+                console.log(reg_new);
+                reg_new1 = new RegExp(reg_new);
+                console.log(reg_new1);
+                text = text.replace(reg_new1, `<span class="alerts_corrections ">${punc}</span>`);
+                console.log(text);
+            }
+            var div = document.createElement('div');
+            div.innerHTML = text;
+            let advice_inner = document.getElementById("result");
+            advice_inner.innerText = "";
+            advice_inner.appendChild(div);
         },
     },
     setup() {
