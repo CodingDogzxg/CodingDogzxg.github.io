@@ -32,6 +32,10 @@
                             :value="item.value">
                             </el-option>
                         </el-select>
+                        <el-button size="small" class="el-btn1-nxtselect">教程</el-button>
+                        <el-badge value="new" class="item">
+                        <el-button size="small" class="el-btn2-nxtselect" onclick="javascript:window.location.href='mailto:codingdogzxg@gmail.com'">反馈建议</el-button>
+                        </el-badge>
                     </el-aside>
                 </el-container>
                 <el-container class="margin-l-r">
@@ -42,7 +46,7 @@
                     </el-aisde>
                 </el-container>
                 <el-container class="margin-l-r">
-                    <el-aisde style="width:100%; padding-top: 5px;">
+                    <el-aisde style="width: 100%; padding-top: 5px;">
                         <el-input style="width:55%"
                         type="textarea"
                         :rows="10"
@@ -57,16 +61,17 @@
                     </el-aside>
                 </el-container>
                 <el-container class="margin-l-r">
-                    <el-footer class="el-footer-text">Result:</el-footer>
+                    <el-footer class="el-footer-text">句读结果:</el-footer>
                 </el-container>
-                <el-footer style="background-color: #2b91f7;">choice 1</el-footer>
-                <el-footer style="background-color: #409EFF;">choice 2</el-footer>
-                <el-footer style="background-color: #62aefa;">choice 3</el-footer>
-                <el-footer style="background-color: #74b8fc;">choice 4</el-footer>
-                <el-footer style="background-color: #8ac0f7;">choice 5</el-footer>
-                <el-footer style="background-color: #9ccaf8;">choice 6</el-footer>
-                <el-footer style="background-color: #a8cff7;">choice 7</el-footer>
-                <el-footer style="background-color: #eaf2ff;">choice 8</el-footer>
+                <el-container class="margin-l-r" style="margin-bottom: 10px;">
+                    <el-aside class="el-aside-result">
+                        <el-aside class="el-aside-inside-result" style="width:71%">
+                            <span>
+                                result
+                            </span>
+                        </el-aside>
+                    </el-aside>
+                </el-container>
             </el-container>
         </div>
     </div>

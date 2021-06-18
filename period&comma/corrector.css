@@ -14,6 +14,20 @@
   .el-footer-text {
     padding-left: 0% !important
   }
+
+  .el-aside-result {
+    padding-left: 0% !important;
+    width: 100% !important;
+  }
+
+  .el-aside-inside-result {
+    padding-left: 0% !important;
+    width: 100% !important;
+  }
+
+  .el-btn1-nxtselect, .el-btn2-nxtselect {
+    margin-left: 10px !important;
+  }
 }
 
 .margin-l-r {
@@ -37,11 +51,10 @@
 .el-footer {
   background-color: white;
   text-align: center;
-  height: 45px !important;
+  height: 25px !important;
 }
 
 .el-footer-text {
-  padding-top: 5px;
   text-align: left;
   width: 100% !important;
   padding-left: 22.5%;
@@ -54,6 +67,20 @@
   padding-left: 22.5%;
 }
 
+.el-aside-result {
+  width: 100% !important;
+  height: 200px;
+  text-align: left;
+  padding-left: 22.5%;
+}
+
+.el-aside-inside-result {
+  height:200px;
+  border:1px solid #409EFF;
+  border-radius:5px;
+  color: black;
+}
+
 .el-main {
   background-color: #E9EEF3;
   color: #333;
@@ -64,18 +91,17 @@ body > .el-container {
   margin-bottom: 40px;
 }
 
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
-}
-
 .el-select {
   padding-top: 5px;
   width: 125px;
+}
+
+.el-btn1-nxtselect {
+  margin-left: 50px;
+}
+
+.el-btn2-nxtselect {
+  margin-left: 10px;
 }
 
 .el-input__inner {
