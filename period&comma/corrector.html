@@ -24,12 +24,13 @@
                 </el-header>
                 <el-container class="margin-l-r">
                     <el-aside class="el-aside-select">
-                        <el-select v-model="value">
+                        <el-select v-model="select_value" @change="select_change(select_value)">
                             <el-option
                             v-for="item in options"
                             :key="item.value"
                             :label="item.label"
-                            :value="item.value">
+                            :value="item.value"
+                            >
                             </el-option>
                         </el-select>
                         <el-button size="small" class="el-btn1-nxtselect">教程</el-button>
@@ -51,7 +52,8 @@
                         type="textarea"
                         :rows="10"
                         placeholder="请输入正文"
-                        v-model="textarea">
+                        v-model="textarea"
+                        id="article">
                         </el-input>
                     </el-aisde>
                 </el-container>
@@ -66,12 +68,27 @@
                 <el-container class="margin-l-r" style="margin-bottom: 10px;">
                     <el-aside class="el-aside-result">
                         <el-aside class="el-aside-inside-result" style="width:71%">
-                            <span>
-                                result
-                            </span>
+                            <p style="margin: 5px; padding-left: 5px; padding-right: 5px" id="result">
+                                还没句读呢！
+                            </p>
                         </el-aside>
                     </el-aside>
                 </el-container>
+                <el-container class="margin-l-r">
+                    <el-footer class="el-footer-text">句读建议:</el-footer>
+                </el-container>
+                
+                <el-container class="margin-l-r" style="margin-bottom: 10px;">
+                    <el-aside class="el-aside-advice">
+                        <el-aside class="el-aside-inside-advice" style="width:71%">
+                            <p style="margin: 5px; padding-left: 5px; padding-right: 5px" id="advice">
+                                还没句读呢！
+                            </p>
+                        </el-aside>
+                    </el-aside>
+                </el-container>
+                
+                <el-divider style="margin-top: 50px;">2021 句读© 版权所有</el-divider>
             </el-container>
         </div>
     </div>

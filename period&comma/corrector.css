@@ -25,6 +25,16 @@
     width: 100% !important;
   }
 
+  .el-aside-advice {
+    padding-left: 0% !important;
+    width: 100% !important;
+  }
+
+  .el-aside-inside-advice {
+    padding-left: 0% !important;
+    width:100% !important;
+  }
+
   .el-btn1-nxtselect, .el-btn2-nxtselect {
     margin-left: 10px !important;
   }
@@ -78,7 +88,19 @@
   height:200px;
   border:1px solid #409EFF;
   border-radius:5px;
-  color: black;
+}
+
+.el-aside-advice {
+  width: 100% !important;
+  height: 100px;
+  text-align: left;
+  padding-left: 22.5%;
+}
+
+.el-aside-inside-advice {
+  height: 100px;
+  color: #606266;
+  font-size: 14px;
 }
 
 .el-main {
@@ -119,6 +141,15 @@ body > .el-container {
   color: white;
 }
 
+.el-textarea__inner {
+  font-family:Arial,Verdana,Sans-serif !important;
+  padding: 5px 10px;
+}
+
+.el-textarea {
+  word-break:break-all;
+}
+
 .el-button--primary:focus, .el-button--primary:hover 
 {
   background-color: #409EFF;
@@ -127,3 +158,10 @@ body > .el-container {
 .el-button--primary.is-active, .el-button--primary:active {
   background: #a4cffa;
 }
+
+.el-aside-inside-result {
+  font-family:Arial,Verdana,Sans-serif;
+  font-size: 14px;
+  color: #606266;
+}
+
