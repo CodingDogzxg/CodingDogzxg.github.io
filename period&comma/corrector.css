@@ -100,7 +100,7 @@
 .el-aside-inside-advice {
   height: 100px;
   color: #606266;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .el-main {
@@ -141,9 +141,14 @@ body > .el-container {
   color: white;
 }
 
+.el-input.is-disabled .el-input__inner{
+  background-color: #409EFF;
+}
+
 .el-textarea__inner {
   font-family:Arial,Verdana,Sans-serif !important;
   padding: 5px 10px;
+  font-size: 18px;
 }
 
 .el-textarea {
@@ -161,12 +166,20 @@ body > .el-container {
 
 .el-aside-inside-result {
   font-family:Arial,Verdana,Sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   color: #606266;
+}
+
+.footer-none-color {
+  background-color: white !important;
+  color: #303133;
+  font-size: 14px;
 }
 
 .alerts_corrections {
   font-family:Arial,Verdana,Sans-serif;
-  border-bottom: 3px solid rgb(255, 153, 171);
+  border-bottom: 3px solid red;
   background-color: #FFD6E3;
+  font-weight: 500 !important;
 }
+

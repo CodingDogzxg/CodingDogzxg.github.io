@@ -24,7 +24,7 @@
                 </el-header>
                 <el-container class="margin-l-r">
                     <el-aside class="el-aside-select">
-                        <el-select v-model="select_value" @change="select_change(select_value)">
+                        <el-select v-model="select_value" :onchange="select_onchange(select_value)">
                             <el-option
                             v-for="item in options"
                             :key="item.value"
@@ -33,7 +33,7 @@
                             >
                             </el-option>
                         </el-select>
-                        <el-button size="small" class="el-btn1-nxtselect">教程</el-button>
+                        <el-button size="small" class="el-btn1-nxtselect" @click="instruct">教程</el-button>
                         <el-badge value="new" class="item">
                         <el-button size="small" class="el-btn2-nxtselect" onclick="javascript:window.location.href='mailto:codingdogzxg@gmail.com'">反馈建议</el-button>
                         </el-badge>
@@ -41,7 +41,7 @@
                 </el-container>
                 <el-container class="margin-l-r">
                     <el-aisde style="width:100%">
-                        <el-input placeholder="请输入Title" v-model="input1" style="width: 55%;">
+                        <el-input id="title" :disabled="input_disabled == 0" :placeholder="input_placeholder" v-model="input_title" style="width: 55%;" :onchang="title_change(input_title)">
                             <template #prepend>Title</template>
                         </el-input>
                     </el-aisde>
@@ -59,7 +59,7 @@
                 </el-container>
                 <el-container>
                     <el-aside style="width: 100%; padding-top: 5px;">
-                        <el-button @click="open1" type="primary">句读一下 <i class="el-icon-s-promotion cl-icon--right"></i></el-button>
+                        <el-button @click="periodComma" type="primary">句读一下 <i class="el-icon-s-promotion cl-icon--right"></i></el-button>
                     </el-aside>
                 </el-container>
                 <el-container class="margin-l-r">
@@ -82,13 +82,16 @@
                     <el-aside class="el-aside-advice">
                         <el-aside class="el-aside-inside-advice" style="width:71%">
                             <p style="margin: 5px; padding-left: 5px; padding-right: 5px" id="advice">
-                                还没句读呢！
+                                没毛病嗷hxd
                             </p>
                         </el-aside>
                     </el-aside>
                 </el-container>
                 
-                <el-divider style="margin-top: 50px;">2021 句读© 版权所有</el-divider>
+                <el-divider style="margin-top: 50px;" >我可是有底线的</el-divider>
+                <span class="el-divider footer-none-color" onclick="javascript:window.open('https:\/\/www.codingdog.xyz', '_blank');">@Author: CodingDogzxg</span>
+                <p style="margin: 0;" class="el-divider footer-none-color">2021 句读© 版权所有</p>
+
             </el-container>
         </div>
     </div>

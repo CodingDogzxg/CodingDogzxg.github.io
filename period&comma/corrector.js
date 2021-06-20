@@ -1,8 +1,17 @@
+let advice_dict = {
+    "en-spc_err" : "问题：缺失半角空格/重复使用标点。 解决方法：标点后加空格/删除重复标点。",
+};
+
+function show_corrections(type) {
+    advice = document.getElementById("advice");
+    advice.innerText = advice_dict[type];
+};
+
 const { defineComponent, ref, h } = Vue
 
 var Main = defineComponent({
     methods: {
-        open1() {
+        periodComma() {
             a = this.textarea;
             if(this.select_value == "选择语境") {
                 this.$notify({
@@ -32,24 +41,53 @@ var Main = defineComponent({
                 message: h('i', {style: 'color: #409EFF'}, lang + '语境功能尚未完成，客官敬请期待！')
                 });
         },
-        select_change(value) {
-            console.log(value);
+        select_onchange(lang) {
+            if(lang == "en") {
+                this.input_disabled = 1;
+                this.input_placeholder = "请输入Title";
+            } else {
+                this.input_disabled = 0;
+                this.input_placeholder = "仅在英文语境下可用";
+            }
+        },
+        instruct() {
+            this.$alert('1.选择您论文的语言语境<br> 2.输入/粘贴您的论文到正文框 <br> 3.点击句读按钮', '教程', {
+              confirmButtonText: '哇嘎哒',
+              dangerouslyUseHTMLString: true,
+            });
+        },
+        title_change(title) {
+            let funcWords = ["a", "an", "the", "for", "and", "nor", "but", "or", "yet", "so", "at", "around", 
+                             "by", "after", "along", "for", 'from', "of", "on", "to", "with", "without"];
+            let title_array = title.split(" ");
+            console.log("onblur called");
         },
         funcReEnglish(text) {
-            let reg = /[,.:;!?](?! ])/g;
+            let reg = /[,.:;!?](?!([ |"]))/g;
+            let answer = "";
+            text = text + " ";
+            console.log(text);
             let text_temp = text;
             while(res = reg.exec(text_temp)) {
+                let count = 0;
+                let solid = text.match(/^([a-z]| |[,.:;!?] )+/g);
+                let idx = !solid ? 0 : solid[0].length;
+                // if(solid) console.log("solid" + solid[0].length);
                 let punc = res[0];
                 let str = '[p](?! )';
                 let reg_new = str.replace('p', punc);
-                console.log(reg_new);
+                // console.log(reg_new);
                 reg_new1 = new RegExp(reg_new);
-                console.log(reg_new1);
-                text = text.replace(reg_new1, `<span class="alerts_corrections ">${punc}</span>`);
-                console.log(text);
+                text = text.replace(reg_new1, `<span class="alerts_corrections" onclick="show_corrections('en-spc_err');">${punc}</span>`);
+                count ++;
+                answer += text.slice(0, idx + count * 83); // slice 不包括下标end
+                text = text.slice(idx + count * 82 + 1); // slice 包括下标start
+                // console.log("answer: " + answer);
+                // console.log("text: " + text);
             }
+            answer += text ? text : "";
             var div = document.createElement('div');
-            div.innerHTML = text;
+            div.innerHTML = answer;
             let advice_inner = document.getElementById("result");
             advice_inner.innerText = "";
             advice_inner.appendChild(div);
@@ -57,8 +95,10 @@ var Main = defineComponent({
     },
     setup() {
         return {
+            input_disabled : 0,
+            input_placeholder: ref("仅在英文语境下可用"),
             select_value: ref("选择语境"),
-            input1: ref(''),
+            input_title: ref(''),
             textarea: ref(''),
         }
     },
