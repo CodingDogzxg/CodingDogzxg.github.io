@@ -35,6 +35,19 @@ var Main = defineComponent({
                 }
             }
         },
+        change_color() {
+            // Yank theme color from localStorage and use it.
+            // document.documentElement.style.setProperty("--mainColor", localStorage.getItem("userThemeColor"));
+            var colorInput = document.querySelector("#choose-theme-color");
+            colorInput.addEventListener("change", function() {
+            // Theme the site!
+            document.documentElement.style.setProperty("--mainColor", this.value);
+            let lighter = "#" + ((parseInt(Number("0x" + this.value.slice(1)), 10) - 31) % 16777215).toString(16);
+            document.documentElement.style.setProperty("--mainColor-btn-prm", lighter);
+            // Save the value for next time page is visited.
+            // localStorage.setItem("userThemeColor", this.value);
+            });
+        },
         prompt_unfinish_text(lang) {
             this.$notify({
                 title: '提示',
@@ -54,7 +67,7 @@ var Main = defineComponent({
             this.$alert('1.选择您论文的语言语境<br> 2.输入/粘贴您的论文到正文框 <br> 3.点击句读按钮', '教程', {
               confirmButtonText: '哇嘎哒',
               dangerouslyUseHTMLString: true,
-            });
+            }).catch(e=>e);
         },
         title_change(title) {
             let funcWords = ["a", "an", "the", "for", "and", "nor", "but", "or", "yet", "so", "at", "around", 
@@ -101,6 +114,9 @@ var Main = defineComponent({
             input_title: ref(''),
             textarea: ref(''),
         }
+    },
+    mounted(){
+        this.change_color()
     },
     data() {
         return {

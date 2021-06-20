@@ -46,7 +46,7 @@
 }
 
 .el-header {
-    background-color: #409EFF;
+    background-color: var(--mainColor);
     color: #333;
     text-align: center;
     line-height: 60px;
@@ -68,7 +68,7 @@
   text-align: left;
   width: 100% !important;
   padding-left: 22.5%;
-  color: #409EFF;
+  color: var(--mainColor);
 }
 
 .el-aside-select {
@@ -86,7 +86,7 @@
 
 .el-aside-inside-result {
   height:200px;
-  border:1px solid #409EFF;
+  border:1px solid var(--mainColor);
   border-radius:5px;
 }
 
@@ -128,13 +128,13 @@ body > .el-container {
 
 .el-input__inner {
   color: white;
-  background: #409EFF ;
+  background: var(--mainColor) ;
 }
 
 .el-input-group__prepend {
   font-family:Arial,Verdana,Sans-serif;
   color: white;
-  background: #409EFF ;
+  background: var(--mainColor) ;
 }
 
 .el-input__inner::placeholder {
@@ -142,7 +142,7 @@ body > .el-container {
 }
 
 .el-input.is-disabled .el-input__inner{
-  background-color: #409EFF;
+  background-color: var(--mainColor);
 }
 
 .el-textarea__inner {
@@ -155,13 +155,37 @@ body > .el-container {
   word-break:break-all;
 }
 
+.el-button--small:focus, .el-button--small:hover 
+{
+  background-color: var(--mainColor);
+  border-color: black;
+  color: white
+}
+
+.el-button--small.is-active, .el-button--small:active {
+  background: var(--mainColor);
+  border-color: black;
+  color: white;
+}
+
 .el-button--primary:focus, .el-button--primary:hover 
 {
-  background-color: #409EFF;
+  background-color: var(--mainColor-btn-prm);
+  border-color: black;
 }
 
 .el-button--primary.is-active, .el-button--primary:active {
-  background: #A4CFFa;
+  background: var(--mainColor);
+  border-color: black;
+}
+
+.el-badge__content--primary {
+  background-color: var(--mainColor);
+}
+
+.el-button--primary {
+  background-color: var(--mainColor);
+  border-color : white;
 }
 
 .el-aside-inside-result {
@@ -183,3 +207,11 @@ body > .el-container {
   font-weight: 500 !important;
 }
 
+:root {
+  --mainColor: #409EFF;
+  --mainColor-btn-prm:  #A4CFFa;
+}
+
+.c_color {
+  color: var(--mainColor);
+}
