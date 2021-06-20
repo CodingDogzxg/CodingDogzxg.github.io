@@ -22,10 +22,12 @@
                 <el-header>
                     <el-image :size="45" fit="contain" src="./resource/pics/avatar.png"></el-image>
                 </el-header>
-                <el-container>
-                    <el-aside style="width: 100%; text-align: left; height:28px; padding-left: 5px; padding-top: 5px;">
-                        <p class="c_color" style="margin:0;display: inline;">Choose theme color: </p>
-                        <input type="color" value="#409EFF" id="choose-theme-color">
+                <el-container class="margin-l-r">
+                    <el-aside style="width: 100%; padding-top: 5px; height: 28px; text-align: left;">
+                        <div class="color-input" style="display: inline">
+                            <p class="c_color" style="margin: 0; display: inline;">Choose theme color: </p>
+                            <input type="color" value="#409EFF" id="choose-theme-color">
+                        </div>
                     </el-aside>
                 </el-container>
                 <el-container class="margin-l-r">
@@ -46,7 +48,7 @@
                     </el-aside>
                 </el-container>
                 <el-container class="margin-l-r">
-                    <el-aisde style="width:100%">
+                    <el-aisde style="width: 100%">
                         <el-input id="title" :disabled="input_disabled == 0" :placeholder="input_placeholder" v-model="input_title" style="width: 55%;" :onchang="title_change(input_title)">
                             <template #prepend>Title</template>
                         </el-input>
@@ -73,7 +75,7 @@
                 </el-container>
                 <el-container class="margin-l-r" style="margin-bottom: 10px;">
                     <el-aside class="el-aside-result">
-                        <el-aside class="el-aside-inside-result" style="width:71%">
+                        <el-aside class="el-aside-inside-result" style="width: 71%">
                             <p style="margin: 5px; padding-left: 5px; padding-right: 5px" id="result">
                                 还没句读呢！
                             </p>
@@ -86,7 +88,7 @@
                 
                 <el-container class="margin-l-r" style="margin-bottom: 10px;">
                     <el-aside class="el-aside-advice">
-                        <el-aside class="el-aside-inside-advice" style="width:71%">
+                        <el-aside class="el-aside-inside-advice" style="width: 71%;">
                             <p style="margin: 5px; padding-left: 5px; padding-right: 5px" id="advice">
                                 没毛病嗷hxd
                             </p>

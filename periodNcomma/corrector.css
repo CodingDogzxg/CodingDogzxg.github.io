@@ -3,6 +3,10 @@
     width: 100% !important;
   }
 
+  .color-input {
+    padding-left: 0% !important;
+  }
+
   .el-aside-select {
     padding-left: 0% !important;
   }
@@ -111,6 +115,12 @@
 
 body > .el-container {
   margin-bottom: 40px;
+}
+
+.color-input {
+  width: 55%;
+  text-align: left;
+  padding-left: 22.5%;
 }
 
 .el-select {
