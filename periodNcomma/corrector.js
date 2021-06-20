@@ -9,19 +9,19 @@ function show_corrections(type) {
 
 const { defineComponent, ref, h } = Vue
 
-var Main = defineComponent({
+let Main = defineComponent({
     methods: {
         periodComma() {
             a = this.textarea;
             if(this.select_value == "选择语境") {
                 this.$notify({
                     title: '提示',
-                    message: h('i', {style: 'color: #409EFF'}, '空语境？句读之不知？')
+                    message: h('i', {style: `color: ${this.theme_color}`}, '空语境？句读之不知？')
                     });
             } else if(!a) {
                 this.$notify({
                     title: '提示',
-                    message: h('i', {style: 'color: #409EFF'}, '空句读？惑之不解？')
+                    message: h('i', {style: `color: ${this.theme_color}`}, '空句读？惑之不解？')
                     });
             } else {
                 let tx = this.textarea;
@@ -38,20 +38,22 @@ var Main = defineComponent({
         change_color() {
             // Yank theme color from localStorage and use it.
             // document.documentElement.style.setProperty("--mainColor", localStorage.getItem("userThemeColor"));
-            var colorInput = document.querySelector("#choose-theme-color");
+            let colorInput = document.querySelector("#choose-theme-color");
+            let that = this;
             colorInput.addEventListener("change", function() {
-            // Theme the site!
-            document.documentElement.style.setProperty("--mainColor", this.value);
-            let lighter = "#" + ((parseInt(Number("0x" + this.value.slice(1)), 10) - 31) % 16777215).toString(16);
-            document.documentElement.style.setProperty("--mainColor-btn-prm", lighter);
-            // Save the value for next time page is visited.
-            // localStorage.setItem("userThemeColor", this.value);
+                document.documentElement.style.setProperty("--mainColor", this.value);
+                that.theme_color = this.value;
+                // lighten func: convert sliced hex string to dec; minus 31 and convert back
+                let lighter = "#" + ((parseInt(Number("0x" + this.value.slice(1)), 10) - 31) % 16777215).toString(16);
+                document.documentElement.style.setProperty("--mainColor-btn-prm", lighter);
+                // Save the value for next time page is visited.
+                // localStorage.setItem("userThemeColor", this.value);
             });
         },
         prompt_unfinish_text(lang) {
             this.$notify({
                 title: '提示',
-                message: h('i', {style: 'color: #409EFF'}, lang + '语境功能尚未完成，客官敬请期待！')
+                message: h('i', {style: `color: ${this.theme_color}`}, lang + '语境功能尚未完成，客官敬请期待！')
                 });
         },
         select_onchange(lang) {
@@ -64,7 +66,13 @@ var Main = defineComponent({
             }
         },
         instruct() {
-            this.$alert('1.选择您论文的语言语境<br> 2.输入/粘贴您的论文到正文框 <br> 3.点击句读按钮', '教程', {
+            this.$alert(`1.选择您论文的语言语境<br>
+                         2.输入/粘贴您的论文到正文框<br>
+                         3.点击句读按钮<br><br>
+                         ps: 本站不提供语法错误标红<br>
+                         获得语法支持请到：<br>
+                         <a href="https://app.grammarly.com/" target="_blank">Grammarly</a><br>
+                         `, '教程', {
               confirmButtonText: '哇嘎哒',
               dangerouslyUseHTMLString: true,
             }).catch(e=>e);
@@ -99,7 +107,7 @@ var Main = defineComponent({
                 // console.log("text: " + text);
             }
             answer += text ? text : "";
-            var div = document.createElement('div');
+            let div = document.createElement('div');
             div.innerHTML = answer;
             let advice_inner = document.getElementById("result");
             advice_inner.innerText = "";
@@ -108,6 +116,7 @@ var Main = defineComponent({
     },
     setup() {
         return {
+            theme_color : "#409EFF",
             input_disabled : 0,
             input_placeholder: ref("仅在英文语境下可用"),
             select_value: ref("选择语境"),

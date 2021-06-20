@@ -15,6 +15,10 @@
     width: 100% !important;
   }
 
+  .el-message-box {
+    width: 85% !important;
+  }
+
   .el-footer-text {
     padding-left: 0% !important
   }
@@ -176,6 +180,10 @@ body > .el-container {
   background: var(--mainColor);
   border-color: black;
   color: white;
+}
+
+.el-message-box {
+  width: 420px;
 }
 
 .el-button--primary:focus, .el-button--primary:hover 
