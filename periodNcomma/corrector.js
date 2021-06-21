@@ -84,7 +84,8 @@ let Main = defineComponent({
             console.log("onblur called");
         },
         funcReEnglish(text) {
-            let reg = /[,.:;!?](?!([ |"]))/g;
+            // [,.:;!?]后接的并不是空格、引号或数字0-9中的一个
+            let reg = /[,.:;!?](?!([ |"|\[0-9\]]))/g;
             let answer = "";
             text = text + " ";
             console.log(text);
@@ -107,6 +108,7 @@ let Main = defineComponent({
                 // console.log("text: " + text);
             }
             answer += text ? text : "";
+            answer = answer.replace(/\n/g,"<br>");
             let div = document.createElement('div');
             div.innerHTML = answer;
             let advice_inner = document.getElementById("result");

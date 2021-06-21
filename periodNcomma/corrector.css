@@ -163,6 +163,15 @@ body > .el-container {
   font-family:Arial,Verdana,Sans-serif !important;
   padding: 5px 10px;
   font-size: 18px;
+  border-color: var(--mainColor);
+}
+
+.el-textarea__inner:focus, .el-textarea__inner:hover {
+  border-color: var(--mainColor);
+}
+
+.el-textarea__inner.is-active, .el-textarea__inner:active {
+  border-color: var(--mainColor);
 }
 
 .el-textarea {
