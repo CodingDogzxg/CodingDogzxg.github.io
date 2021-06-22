@@ -100,13 +100,13 @@
 
 .el-aside-advice {
   width: 100% !important;
-  height: 100px;
+  height: 200px;
   text-align: left;
   padding-left: 22.5%;
 }
 
 .el-aside-inside-advice {
-  height: 100px;
+  height: 200px;
   color: #606266;
   font-size: 18px;
 }
@@ -175,7 +175,7 @@ body > .el-container {
 }
 
 .el-textarea {
-  word-break:break-all;
+  word-wrap: break-word;
 }
 
 .el-button--small:focus, .el-button--small:hover 
@@ -221,6 +221,14 @@ body > .el-container {
   color: #606266;
 }
 
+.p-inside-result {
+  margin: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  word-wrap: break-word;
+  line-height: 25px;
+}
+
 .footer-none-color {
   background-color: white !important;
   color: #303133;
@@ -234,9 +242,16 @@ body > .el-container {
   font-weight: 500 !important;
 }
 
+.alerts_inspections {
+  font-family:Arial,Verdana,Sans-serif;
+  border-bottom: 3px solid blue;
+  background-color: #7AB4F7;
+  font-weight: 500 !important;
+}
+
 :root {
   --mainColor: #409EFF;
-  --mainColor-btn-prm:  #A4CFFa;
+  --mainColor-btn-prm:  #A4CFFA;
 }
 
 .c_color {

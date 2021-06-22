@@ -1,5 +1,53 @@
 let advice_dict = {
-    "en-spc_err" : "问题：缺失半角空格/重复使用标点。 解决方法：标点后加空格/删除重复标点。",
+    "en-spa_err" : `问题：缺失半角空格/重复使用标点
+                    [.,:;!?]的使用标准:
+                    1->标点前不能存在空格 标点后需要有一个半角空格
+                    2->不能连用标点
+                    请根据使用标准检查错误并更正
+                    `,
+    "en-spb_err" : `问题：半角标点前存在空格
+                    [.,:;!?]的使用标准:
+                    1->标点前不能存在空格 标点后需要有一个半角空格
+                    请根据使用标准检查错误并更正`,
+    "en-quo_err" : `问题：引号使用提示 请手动检查是否存在以下使用不正确：
+                    [""]的使用标准:
+                    1->左引号前和右引号后需要有一个半角空格
+                    2->左引号后和右引号前不能有空格
+                    请根据使用标准检查错误并更正
+                    `,
+    "en-brk_err" : `问题：括号使用提示 请手动检查是否存在以下使用不正确：
+                    [()]的使用标准:
+                    1->左括号前和右括号后需要有一个半角空格
+                    2->左括号后和右括号前不能有空格
+                    请根据使用标准检查错误并更正
+                    `,
+    "en-dsh_err" : `问题：连字符/破折号错误
+                    [- —]的使用标准:
+                    1->连字符和破折号前后都不能有空格
+                    请根据使用标准检查错误并更正
+                    `,
+    "en-and_err" : `问题：&号错误
+                    [&]的使用标准:
+                    1->&符合前后都需要有一个半角空格
+                    请根据使用标准检查错误并更正
+                    `,
+    "en-slh_err" : `问题：[/]使用提示
+                    [/]的用法过于复杂 请手动检查是否存在以下使用不正确：
+                    1->表示单词间的或：前后都不能有空格
+                       e.g. his/her he/she and/or
+                       表示多词术语/复合词的或：前后都要有一个半角空格
+                       e.g. World War I / First World War
+                    2->表示缩写：前后都不能有空格
+                       e.g. w/o = without 
+                            w/ = with
+                    3->表示时间：前后都不能有空格：
+                       e.g. 11/17/16
+                    4->表示诗词断句：前不能有空格 后有一个半角空格
+                       e.g. Mary had a little lamb/ little lamb, little lamb/ 
+                    `,
+    "en-nan_err" : `问题：存在全角标点
+                    请将全角标点换为半角
+                    `,
 };
 
 function show_corrections(type) {
@@ -27,7 +75,7 @@ let Main = defineComponent({
                 let tx = this.textarea;
                 let lang = this.select_value;
                 switch (lang) {
-                    case "en" : this.funcReEnglish(tx); break;
+                    case "en" : funcReEnglish(tx); break;
                     case "fr" : this.prompt_unfinish_text("Français"); break;
                     case "zh" : this.prompt_unfinish_text("中文"); break;
                     case "jp" : this.prompt_unfinish_text("日本語"); break;
@@ -82,38 +130,6 @@ let Main = defineComponent({
                              "by", "after", "along", "for", 'from', "of", "on", "to", "with", "without"];
             let title_array = title.split(" ");
             console.log("onblur called");
-        },
-        funcReEnglish(text) {
-            // [,.:;!?]后接的并不是空格、引号或数字0-9中的一个
-            let reg = /[,.:;!?](?!([ |"|\[0-9\]]))/g;
-            let answer = "";
-            text = text + " ";
-            console.log(text);
-            let text_temp = text;
-            while(res = reg.exec(text_temp)) {
-                let count = 0;
-                let solid = text.match(/^([a-z]| |[,.:;!?] )+/g);
-                let idx = !solid ? 0 : solid[0].length;
-                // if(solid) console.log("solid" + solid[0].length);
-                let punc = res[0];
-                let str = '[p](?! )';
-                let reg_new = str.replace('p', punc);
-                // console.log(reg_new);
-                reg_new1 = new RegExp(reg_new);
-                text = text.replace(reg_new1, `<span class="alerts_corrections" onclick="show_corrections('en-spc_err');">${punc}</span>`);
-                count ++;
-                answer += text.slice(0, idx + count * 83); // slice 不包括下标end
-                text = text.slice(idx + count * 82 + 1); // slice 包括下标start
-                // console.log("answer: " + answer);
-                // console.log("text: " + text);
-            }
-            answer += text ? text : "";
-            answer = answer.replace(/\n/g,"<br>");
-            let div = document.createElement('div');
-            div.innerHTML = answer;
-            let advice_inner = document.getElementById("result");
-            advice_inner.innerText = "";
-            advice_inner.appendChild(div);
         },
     },
     setup() {
