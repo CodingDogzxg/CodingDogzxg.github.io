@@ -125,6 +125,16 @@ let Main = defineComponent({
               dangerouslyUseHTMLString: true,
             }).catch(e=>e);
         },
+        report() {
+            this.$alert(`若反馈意见得到采纳<br>
+                         则文档导出功能上线后 获得抢先使用资格！<br>
+                         <a href="https://www.zhihu.com/people/qaucodingdog" target="_blank">知乎反馈</a><br>
+                         <a href="mailto:codingdogzxg@gmail.com" target="_blank">邮箱反馈</a><br>
+                         `, '教程', {
+              confirmButtonText: '哇嘎哒',
+              dangerouslyUseHTMLString: true,
+            }).catch(e=>e);
+        },
         title_change(title) {
             let funcWords = ["a", "an", "the", "for", "and", "nor", "but", "or", "yet", "so", "at", "around", 
                              "by", "after", "along", "for", 'from', "of", "on", "to", "with", "without"];
