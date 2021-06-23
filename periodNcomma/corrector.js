@@ -1,7 +1,6 @@
-new_element=document.createElement("script");
-new_element.setAttribute("type","text/javascript");
-new_element.setAttribute("src","./reFunctionsEn.js");
-document.body.appendChild(new_element);
+function callback_en(t) {
+    funcReEnglish(t);
+}
 let advice_dict = {
     "en-spa_err" : `问题：缺失半角空格/重复使用标点
                     [.,:;!?]的使用标准:
@@ -79,7 +78,7 @@ let Main = defineComponent({
                 let tx = this.textarea;
                 let lang = this.select_value;
                 switch (lang) {
-                    case "en" : funcReEnglish(tx); break;
+                    case "en" : callback_en(tx); break;
                     case "fr" : this.prompt_unfinish_text("Français"); break;
                     case "zh" : this.prompt_unfinish_text("中文"); break;
                     case "jp" : this.prompt_unfinish_text("日本語"); break;
