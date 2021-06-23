@@ -1,3 +1,7 @@
+new_element=document.createElement("script");
+new_element.setAttribute("type","text/javascript");
+new_element.setAttribute("src","./reFunctionsEn.js");
+document.body.appendChild(new_element);
 let advice_dict = {
     "en-spa_err" : `问题：缺失半角空格/重复使用标点
                     [.,:;!?]的使用标准:

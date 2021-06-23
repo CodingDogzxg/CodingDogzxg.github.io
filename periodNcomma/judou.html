@@ -1,111 +1,109 @@
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <script src="./resource/js/vue3.1.1.js"></script>
-    <!-- import CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/element-plus@1.0.2-beta.48/lib/theme-chalk/index.css">
-    <link rel="stylesheet" href="corrector.css">
-    <!-- import JavaScript -->
-    <script src="./resource/js/elemp102b48.js"></script>
-    <link rel="shortcut icon" href="./resource/pics/shortcut.ico" />
-    
-    <link rel="bookmark" href="./resource/pics/cursor.ico" />
-    <link rel="stylesheet" href="./resource/css/cursor.css" />
-    <title>句读</title>
-</head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <script src="./resource/js/vue3.1.1.js"></script>
+        <!-- import CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/element-plus@1.0.2-beta.48/lib/theme-chalk/index.css">
+        <link rel="stylesheet" href="corrector.css">
+        <!-- import JavaScript -->
+        <script src="./resource/js/elemp102b48.js"></script>
+        <link rel="shortcut icon" href="./resource/pics/shortcut.ico" />
+        
+        <link rel="bookmark" href="./resource/pics/cursor.ico" />
+        <link rel="stylesheet" href="./resource/css/cursor.css" />
+        <title>句读</title>
+    </head>
 
-<body style="margin: 0%;">
-    <div id="app">
-        <div class="common-layout">
-            <el-container style="text-align: center;">
-                <el-header>
-                    <el-image :size="45" fit="contain" src="./resource/pics/avatar.png"></el-image>
-                </el-header>
-                <el-container class="margin-l-r">
-                    <el-aside style="width: 100%; padding-top: 5px; height: 28px; text-align: left;">
-                        <div class="color-input" style="display: inline">
-                            <p class="c_color" style="margin: 0; display: inline;">Choose theme color: </p>
-                            <input type="color" value="#409EFF" id="choose-theme-color">
-                        </div>
-                    </el-aside>
-                </el-container>
-                <el-container class="margin-l-r">
-                    <el-aside class="el-aside-select">
-                        <el-select v-model="select_value" :onchange="select_onchange(select_value)">
-                            <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                            >
-                            </el-option>
-                        </el-select>
-                        <el-button size="small" class="el-btn1-nxtselect" @click="instruct">教程</el-button>
-                        <el-badge value="new" class="item">
-                        <el-button size="small" class="el-btn2-nxtselect" @click="report">反馈建议</el-button>
-                        </el-badge>
-                    </el-aside>
-                </el-container>
-                <el-container class="margin-l-r">
-                    <el-aisde style="width: 100%">
-                        <el-input id="title" :disabled="input_disabled == 0" :placeholder="input_placeholder" v-model="input_title" style="width: 55%;" :onchang="title_change(input_title)">
-                            <template #prepend>Title</template>
-                        </el-input>
-                    </el-aisde>
-                </el-container>
-                <el-container class="margin-l-r">
-                    <el-aisde style="width: 100%; padding-top: 5px;">
-                        <el-input style="width:55%"
-                        type="textarea"
-                        :rows="10"
-                        placeholder="请输入正文"
-                        v-model="textarea"
-                        id="article">
-                        </el-input>
-                    </el-aisde>
-                </el-container>
-                <el-container>
-                    <el-aside style="width: 100%; padding-top: 5px;">
-                        <el-button @click="periodComma" type="primary">句读一下 <i class="el-icon-s-promotion cl-icon--right"></i></el-button>
-                    </el-aside>
-                </el-container>
-                <el-container class="margin-l-r">
-                    <el-footer class="el-footer-text">句读结果:</el-footer>
-                </el-container>
-                <el-container class="margin-l-r" style="margin-bottom: 10px;">
-                    <el-aside class="el-aside-result">
-                        <el-aside class="el-aside-inside-result" style="width: 71%">
-                            <p class="p-inside-result" id="result">
-                                还没句读呢！
-                            </p>
+    <body style="margin: 0%;">
+        <div id="app">
+            <div class="common-layout">
+                <el-container style="text-align: center;">
+                    <el-header>
+                        <el-image :size="45" fit="contain" src="./resource/pics/avatar.png"></el-image>
+                    </el-header>
+                    <el-container class="margin-l-r">
+                        <el-aside style="width: 100%; padding-top: 5px; height: 28px; text-align: left;">
+                            <div class="color-input" style="display: inline">
+                                <p class="c_color" style="margin: 0; display: inline;">Choose theme color: </p>
+                                <input type="color" value="#409EFF" id="choose-theme-color">
+                            </div>
                         </el-aside>
-                    </el-aside>
-                </el-container>
-                <el-container class="margin-l-r">
-                    <el-footer class="el-footer-text">句读建议:</el-footer>
-                </el-container>
-                
-                <el-container class="margin-l-r" style="margin-bottom: 10px;">
-                    <el-aside class="el-aside-result">
-                        <el-aside class="el-aside-inside-result" style="width: 71%">
-                            <p class="p-inside-result" id="advice">
-                                还没句读呢！
-                            </p>
+                    </el-container>
+                    <el-container class="margin-l-r">
+                        <el-aside class="el-aside-select">
+                            <el-select v-model="select_value" :onchange="select_onchange(select_value)">
+                                <el-option
+                                v-for="item in options"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value"
+                                >
+                                </el-option>
+                            </el-select>
+                            <el-button size="small" class="el-btn1-nxtselect" @click="instruct">教程</el-button>
+                            <el-badge value="new" class="item">
+                            <el-button size="small" class="el-btn2-nxtselect" @click="report">反馈建议</el-button>
+                            </el-badge>
                         </el-aside>
-                    </el-aside>
-                </el-container>
-                
-                <el-divider style="margin-top: 60px;">我可是有底线的</el-divider>
-                <a href="https://www.codingdog.xyz" target="_blank" style="text-align: center; margin: auto; width: 186px">@Author: CodingDogzxg</a>
-                <p style="margin: 0;" class="el-divider footer-none-color">2021 句读© 版权所有</p>
+                    </el-container>
+                    <el-container class="margin-l-r">
+                        <el-aisde style="width: 100%">
+                            <el-input id="title" :disabled="input_disabled == 0" :placeholder="input_placeholder" v-model="input_title" style="width: 55%;" :onchang="title_change(input_title)">
+                                <template #prepend>Title</template>
+                            </el-input>
+                        </el-aisde>
+                    </el-container>
+                    <el-container class="margin-l-r">
+                        <el-aisde style="width: 100%; padding-top: 5px;">
+                            <el-input style="width:55%"
+                            type="textarea"
+                            :rows="10"
+                            placeholder="请输入正文"
+                            v-model="textarea"
+                            id="article">
+                            </el-input>
+                        </el-aisde>
+                    </el-container>
+                    <el-container>
+                        <el-aside style="width: 100%; padding-top: 5px;">
+                            <el-button @click="periodComma" type="primary">句读一下 <i class="el-icon-s-promotion cl-icon--right"></i></el-button>
+                        </el-aside>
+                    </el-container>
+                    <el-container class="margin-l-r">
+                        <el-footer class="el-footer-text">句读结果:</el-footer>
+                    </el-container>
+                    <el-container class="margin-l-r" style="margin-bottom: 10px;">
+                        <el-aside class="el-aside-result">
+                            <el-aside class="el-aside-inside-result" style="width: 71%">
+                                <p class="p-inside-result" id="result">
+                                    还没句读呢！
+                                </p>
+                            </el-aside>
+                        </el-aside>
+                    </el-container>
+                    <el-container class="margin-l-r">
+                        <el-footer class="el-footer-text">句读建议:</el-footer>
+                    </el-container>
+                    
+                    <el-container class="margin-l-r" style="margin-bottom: 10px;">
+                        <el-aside class="el-aside-result">
+                            <el-aside class="el-aside-inside-result" style="width: 71%">
+                                <p class="p-inside-result" id="advice">
+                                    还没句读呢！
+                                </p>
+                            </el-aside>
+                        </el-aside>
+                    </el-container>
+                    
+                    <el-divider style="margin-top: 60px;">我可是有底线的</el-divider>
+                    <a href="https://www.codingdog.xyz" target="_blank" style="text-align: center; margin: auto; width: 186px">@Author: CodingDogzxg</a>
+                    <p style="margin: 0;" class="el-divider footer-none-color">2021 句读© 版权所有</p>
 
-            </el-container>
+                </el-container>
+            </div>
         </div>
-    </div>
-    
-</body>
-
-<script src="corrector.js"></script>
-<script src="reFunctionsEn.js"></script>
+    </body>
+    <script src="corrector.js"></script>
+    <script src="reFunctionsEn.js"></script>
 </html>
