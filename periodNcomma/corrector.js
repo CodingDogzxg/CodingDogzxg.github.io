@@ -155,9 +155,10 @@ let Main = defineComponent({
     mounted(){
         this.change_color();
         this.$alert(`因为iPhone & Firefox不支持正向后行零宽断言<br>
-                     所以本网站不支持任何iPhone设备<br>
+                     所以本网站不支持任何iPhone设备以及任何平台的FireFox浏览器<br>
                      MacOS中需使用<a href="https://www.microsoft.com/zh-cn/edge" target="_blank">Edge</a>/<a href="https://www.google.cn/chrome/" target="_blank">Chrome浏览器</a><br>
                      <p style="color:red">请复制网址使用电脑访问本网站！</p>
+                     BTW: Firefox sucks! 火狐浏览器是垃圾！
                          `, '提示', {
               confirmButtonText: '哇嘎哒',
               dangerouslyUseHTMLString: true,
