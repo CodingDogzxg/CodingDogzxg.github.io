@@ -154,12 +154,12 @@ let Main = defineComponent({
     },
     mounted(){
         this.change_color();
-        this.$alert(`因为iPhone & Firefox不支持正向后行零宽断言<br>
-                     所以本网站不支持任何iPhone设备以及任何平台的FireFox浏览器<br>
+        this.$alert(`因为iPhone环境中所有浏览器不支持正向后行零宽断言<br>
+                     所以本网站不支持任何iPhone设备上的任何浏览器<br>
                      MacOS中需使用<a href="https://www.microsoft.com/zh-cn/edge" target="_blank">Edge</a>/<a href="https://www.google.cn/chrome/" target="_blank">Chrome浏览器</a><br>
                      <p style="color:red">iPhone用户请复制网址使用电脑访问本网站！</p>
                      <p style="color:red">或者也可以用Android！</p><br>
-                     BTW: Safari & Firefox suck! Safari和Firefox是垃圾！
+                     BTW: Safari sucks! 错怪Firefox了 火狐没Safari那么垃圾
                          `, '提示', {
               confirmButtonText: '哇嘎哒',
               dangerouslyUseHTMLString: true,
