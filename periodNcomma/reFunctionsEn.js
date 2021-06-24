@@ -16,7 +16,7 @@ function funcReEnglish(text) {
         // [,.:;!?]后接的并不是空格、引号或数字0-9中的一个
         // /[,.:;!?](?!([ |"|\[0-9\]]))/g,
         // [,.:;!?]前存在空格 /(?<= )[,.:;!?]/g,
-        /(?<=( |"))[,.:;!?]|[:;!?](?!( |"|\n))|[.](?!( |"|\n|[0-9]+))|,(?!( |"|[0-9]{3}))/g,
+        /(?<= )[,.:;!?]|[:;!?](?!( |"|\n))|[.](?!( |"|\n|[0-9]+))|,(?!( |"|[0-9]{3}))/g,
         // 所有双引号（对错在其他地方进行判断）
         /"/g,
         // 左括号前或右括号后不是空格或引号 左括号后或右括号前存在空格
@@ -53,14 +53,14 @@ function funcReEnglish(text) {
             errorClass["en-spa_err"].splice(0,1);
             // let solid = text.match(/^([a-z]|[A-Z]| (?![,.:;!?])|\n|[,.:;!?] )+/g);
             // let amount = !solid ? 0 : solid[0].length;
-            let raw= /(?<=( |"))[,.:;!?]|[:;!?](?!( |"|\n))|[.](?!( |"|\n|[0-9]+))|,(?!( |"|[0-9]{3}))/.exec(text);
+            let raw= /(?<= )[,.:;!?]|[:;!?](?!( |"|\n))|[.](?!( |"|\n|[0-9]+))|,(?!( |"|[0-9]{3}))/.exec(text);
             let punc = raw[0];
             let amount = raw["index"];
             let newRegExp = null;
             switch(punc) {
                 case(".") : newRegExp = new RegExp('[.](?!( |"|\n|[0-9]+))'); break;
                 case(",") : newRegExp = new RegExp(',(?!( |"|[0-9]{3}))'); break;
-                default : newRegExp = new RegExp('(?<=( |"))[p1]|[p2](?!( |"|\n))'.replace('p1', punc).replace('p2', punc));
+                default : newRegExp = new RegExp('(?<= )[p1]|[p2](?!( |"|\n))'.replace('p1', punc).replace('p2', punc));
             }
             text = text.replace(newRegExp, `<span class="alerts_corrections" onclick="show_corrections('en-spa_err');">${punc}</span>`);
             answer += text.slice(0, amount + 83); // slice 不包括下标end
