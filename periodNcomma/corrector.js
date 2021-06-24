@@ -64,12 +64,12 @@ let Main = defineComponent({
             if(this.select_value == "选择语境") {
                 this.$notify({
                     title: '提示',
-                    message: h('i', {style: `color: ${this.theme_color}`}, '空语境？句读之不知？')
+                    message: h('i', {style: `color: ${this.theme_color}`}, '空语境？句读之不知？\n请在左侧选择语境')
                     });
             } else if(!a) {
                 this.$notify({
                     title: '提示',
-                    message: h('i', {style: `color: ${this.theme_color}`}, '空句读？惑之不解？')
+                    message: h('i', {style: `color: ${this.theme_color}`}, '空句读？惑之不解？\n请在下方输入内容')
                     });
             } else {
                 let tx = this.textarea;
@@ -155,7 +155,7 @@ let Main = defineComponent({
     mounted(){
         this.change_color();
         this.$alert(`因为iPhone环境中所有浏览器不支持正向后行零宽断言<br>
-                     所以本网站不支持任何iPhone设备上的任何浏览器<br>
+                     所以本网站暂时不支持任何iPhone设备上的任何浏览器<br>
                      MacOS中需使用<a href="https://www.microsoft.com/zh-cn/edge" target="_blank">Edge</a>/<a href="https://www.google.cn/chrome/" target="_blank">Chrome浏览器</a><br>
                      <p style="color:red">iPhone用户请复制网址使用电脑访问本网站！</p>
                      <p style="color:red">或者也可以用Android！</p><br>
