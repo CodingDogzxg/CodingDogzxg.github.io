@@ -127,7 +127,7 @@ let Main = defineComponent({
             }).catch(e=>e);
         },
         report() {
-            this.$alert(`若反馈意见得到采纳<br>
+            this.$alert(`若反馈bug/意见得到采纳<br>
                          则文档导出功能上线后 获得抢先使用资格！<br>
                          <a href="https://www.zhihu.com/people/qaucodingdog" target="_blank">知乎反馈</a><br>
                          <a href="mailto:codingdogzxg@gmail.com" target="_blank">邮箱反馈</a><br>
