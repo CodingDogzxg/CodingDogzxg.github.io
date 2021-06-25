@@ -28,7 +28,7 @@ function funcReEnglish(text) {
         // 所有slash
         /\//g,
         // 存在语境中不存在的标点
-        /[，。：；！？￥……（）、“”]/g,
+        /[，。：；！？￥……（）、“”‘’]/g,
     ]
     for(let i=0; i<reExp.length; i++) {
         let res = null;
@@ -140,7 +140,7 @@ function funcReEnglish(text) {
             text = text.slice(amount + 83);
         } else {
             errorClass["en-nan_err"].splice(0,1);
-            let raw = /[，。：；！？￥……（）、“”]/.exec(text)
+            let raw = /[，。：；！？￥……（）、“”‘’]/.exec(text)
             let amount = raw["index"];
             let punc = raw[0];
             newRegExp = new RegExp('p'.replace('p', punc));
